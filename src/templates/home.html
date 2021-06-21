@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<h1 align="center">Flask SMS Spam Classification</h1>
+<form method="POST">
+  <textarea name="msg" id="msg" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Enter Message</button>
+  </div>
+  <div align="right">
+    <label type="button" class="btn btn-info btn-lg">
+      Select Model
+    </label>
+    <div class="form-group">
+      <label for="Model"></label>
+      <select name="model">
+        <option value="CNN">CNN</option>
+        <option value="CNN_Glove">CNN-GloVe</option>
+        <option value="LSTM_CNN">CNN-LSTM</option>
+        <option value="LSTM_Glove">CNN-LSTM-GloVe</option>
+      </select>
+    </div>
+  </div>
+</form>
+<br />
+<div class>
+  <h5>
+    <ul class="list-group" id="results">
+      {% for result in result_list %}
+
+      <li class="list-group-item">
+        Message : {{result.msg}}<br />
+        Type : {{result.label}}<br />
+        Model : {{result.model}}<br />
+      </li>
+
+      {% endfor %}
+    </ul>
+  </h5>
+</div>
+{% endblock %}
